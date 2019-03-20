@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>LOGIN</title>
+    <style type="text/css">
+    	.formPosition {
+    		width: 40%;    		
+    		margin: 24px;
+    	}
+    	.errorMsg {
+    		color: red;
+    		padding-top: 16px;  		
+    	}
+    </style>
+</h:head>
+<h:body>
+    <center><h2>LOGIN</h2></center>
+    <div class="container">
+        <div class="row">
+            <div class="form_bg">
+                <h:form id="loginForm" styleClass="formPosition">
+                    <div class="form-group">
+                        <h:outputLabel value="Username " />
+                        <h:inputText id="loginName" value="#{loginBean.userName}" styleClass="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Password" />
+                        <h:inputSecret id="loginPassword" value="#{loginBean.password}" styleClass="form-control" />
+                    </div>
+                    <div>
+                    	<h:commandButton value="Login" action="#{loginBean.validateUserLogin}" styleClass="btn btn-primary" />
+                    </div>
+                    <div class="errorMsg"><h:message for="loginName" /></div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

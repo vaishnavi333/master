@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+     
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+    <title>Order List</title>
+    <style type="text/css">
+        .tableUpdated {
+            width: 90% !important;
+            margin: 17px 58px 0 !important;
+        }
+        .btnSpace {
+            margin: 17px;
+        }     
+    </style>
+</h:head>
+<h:body>
+    <center><h2><h:outputText value="Order Records"/></h2></center>
+    <h:form id="orderForm">
+        <h:dataTable id="orderTable" binding="#{table}" value="#{orderBean.orderList()}" var="order" class="table table-striped table-hover table-bordered tableUpdated">
+            <h:column>
+                <f:facet name="header">Order Code</f:facet>
+                <h:outputText value="#{order.code}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Product Code</f:facet>
+                <h:outputText value="#{order.productcode}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Order Quantity</f:facet>
+                <h:outputText value="#{order.quantity}" />
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Customer Id</f:facet>
+                <h:outputText value="#{order.customerid}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Vendor Id</f:facet>
+                <h:outputText value="#{order.vendorid}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Update</f:facet>
+                <h:commandButton action="#{orderBean.editorderRecord(order.code)}" value="Update" class="btn btn-primary" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Delete</f:facet>
+                <h:commandButton action="#{orderBean.deleteorderRecord(order.code)}" value="Delete" class="btn btn-danger" />
+            </h:column>
+        </h:dataTable>
+        <center>
+            <h:commandButton action="createOrder.xhtml?faces-redirect=true" value="Create New User" class="btn btn-success btnSpace" />
+        </center>
+    </h:form>
+</h:body>
+</html>
